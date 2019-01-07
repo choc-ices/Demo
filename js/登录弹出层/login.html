@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>login</title>
+<meta charset="utf-8">
+<!-- <link rel="stylesheet" type="text/css" href="css.css"> -->
+<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+		border: 0;
+	}
+	.list{
+		height: 50px;
+		width: 100%;
+		background-color: #aaccbb;
+	}
+	ul{
+		float: right;
+
+	}
+	ul li{
+		display: inline-block;
+		height: 50px;
+		text-align: center;
+		line-height: 50px;
+		margin-right: 30px;
+	}
+	a{
+		color: black;
+		text-decoration: none;
+	}
+	.main img{
+		width: 100%;
+		height: 700px;
+	}
+
+	.login .shadow{
+		display: none;
+		height: 100%;
+		width: 100%;
+		background-color: rgba(0,0,0,0.8);
+		z-index: 99;
+		position: fixed;
+		top: 0;
+		left: 0;
+	}
+	.login .content{
+		display: none;
+		height: 300px;
+		width: 400px;
+		background-color: #f1f1f1;
+		border-radius: 2%;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin: auto ;
+		z-index: 1000;
+	}
+	h3{
+		display: block;
+		text-align: center;
+		margin-top: 30px;
+		margin-bottom: 40px;
+	}
+	.username{
+		border: 1px solid #666;
+		height: 28px;
+		width: 200px;
+		margin-bottom: 15px;
+	}
+	.password{
+		border: 1px solid #666;
+		height: 28px;
+		width: 200px;
+		margin-top: 15px;
+		margin-bottom: 40px;
+	}
+	.submit{
+		height: 30px;
+		width: 60px;
+		border: 1px solid #ccc;
+		padding: auto;
+		font-size: 16px;
+		line-height: 30px;
+		margin-left: 98px;
+		background-color: #000;
+		border-radius: 10%;
+		color: #fff;
+	}
+	#error-msg{
+		font-size: 10px;
+		color: red;
+		padding-left: 40px;
+	}
+	.form{
+		margin-left: 70px;
+	}
+	.close{
+		width: 20px;
+		height: 20px;
+		border: 1px solid black;
+		float: right;
+		text-align: center;
+		line-height: 20px;
+		border-radius: 50%;
+		background-color: #aaa;
+		margin-right: -10px;
+		margin-top: -10px;
+	}
+	.close:hover{
+		cursor: pointer;
+		background-color: #ddd;
+	}
+</style>
+</head>
+<body>
+	<!-- 主页面 -->
+	<div id="list" class="list">
+		<ul>
+			<li><a id="login-text" href="#">登录</a></li>
+			<li><a id="logup-text" href="#">注册</a></li>
+			<li><a href="#">关于我们</a></li>
+			<li><a href="#">产品详情</a></li>
+		</ul>
+	</div>
+	<div class="main">
+		<img src="img/1.jpg">
+	</div>
+	<!-- 登录弹出层 -->
+	<div id="login" class="login">
+		<!-- 遮罩层 -->
+		<div id="shadow" class="shadow"></div>
+		<!-- 登录窗体 -->
+		<div id="content" class="content">
+			<!-- 关闭按钮 -->
+			<div id="close" class="close">X</div>
+			<!-- 内容区域 -->
+			<h3>登 录</h3>
+			<form class="form">
+				<label>账号</label>
+				<input class="username" type="text" name="username"/>
+				<br/>
+				<p id="error-msg"></p>
+				<label>密码</label>
+				<input class="password" type="password" name="password"/>
+				<br/>
+				<button class="submit" type="button">提 交</button>
+			</form>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+	<script>
+	//$('#list:contains("登录")')这种选择方式不行，会给登录注册关于我们产品详情都绑定。
+	//$('#login-text')//这两种选择方式都可以
+	$('#list li:first-child').click(function(){
+		//css样式里面写的是这两个窗体隐藏，所以显示选择器为这两个
+		$('#shadow').show();
+		$('#content').show();
+		//$('#login').show();
+		//提交校验
+		$('.submit').click(function(){
+			var username=$('input[name="username"]').val();
+			var password=$('input[name="password"]').val();
+			if(username=="admin"&&password=="admin"){
+				window.open("login.html","_self");
+				// $('#error-msg').html("");  //不起作用。。
+				alert("登陆成功");
+				//上面几行代码按照道理是先显示出div的内容,再alert,但是实际上是先alert的,然后显示的div的内容。
+				//这是因为:div加载到页面需要时间,还没等加载到页面就执行到alert了,此时alert会阻塞线程,这里阻塞的是GUI渲染线程。
+				//所以等alert执行完毕后这个线程才会继续执行,将div内容显示到页面上。	
+			}else{
+				$('#error-msg').html("账号或密码输入错误");
+			}
+		})
+		//点击关闭按钮关闭窗口
+		$('#close').click(function(){
+			$('#shadow').hide();
+			$('#content').hide();
+		});
+	    //清理错误提示消息
+	    $('#error-msg').html("");
+	})
+	</script>
+</body>
+</html>
