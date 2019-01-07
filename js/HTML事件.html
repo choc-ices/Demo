@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>test</title>
+	<style type="text/css">
+		#btn{
+			width: 20px;
+			height: 40px;
+			background-color: yellow;
+		}
+	</style>
+</head>
+<body>
+
+<div type="button" value="click me" id="btn" onclick="clickFn()"></div>
+<!-- 注意clickFn事件后要加（）； -->
+<script>
+	function clickFn(){
+		alert("huahuakaile");
+		// 注意属性值要加引号
+		document.getElementById("btn").style.background = "grey";
+	}
+</script>
+</body>
+</html>
