@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Good Good Study</title>
+	<style type="text/css">
+	#box1{
+		width: 50px;
+		height: 30px;
+		background-color: #a0a;
+		margin: 0 auto;
+		text-align: center;
+	}
+	#box2{
+		background-color: #ccc;
+		width: 100px;
+		height: 100px;
+		margin: 0 auto;
+		display: none;
+	}
+</style>
+</head>
+<body>
+	<div id="box1">...</div>
+	<div id="box2">隐藏·显示</div>
+	<script type="text/javascript">
+		// 注意获取id时没有#
+		var box1 = document.getElementById("box1");
+		var box2 = document.getElementById("box2");
+		function mouseoverFn(){
+			// alert("huahuakaile");
+			// 注意属性值要加引号
+			box2.style.display = 'block';
+		}
+		function mouseoutFn(){
+			box2.style.display = "none";
+		}
+
+		//注意方法后面不能加括号，加括号等于立即调用；不加触发时调用。
+		box1.onmouseover = mouseoverFn;
+		box1.onmouseout = mouseoutFn;
+	</script>
+</body>
+</html>
