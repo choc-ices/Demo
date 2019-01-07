@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>双飞翼布局</title>
+	<!-- 双飞翼布局：圣杯布局的改良，去掉相对布局，只需要浮动和负边距 -->
+
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	body{min-width: 700px;}
+	.header,
+	.footer{
+		width: 100%;
+		float: left;
+		height: 50px;
+		background-color: grey;
+		line-height: 40px;
+		text-align: center;
+	}
+	.sub, .main-inner, .extra{
+		float: left;
+		min-height: 300px;
+	}
+	/*main包裹整个身体，并设置左右margin值。main-inner放置主体*/
+	.main{
+		width: 100%; 
+	}
+	.main-inner{
+		background-color: yellow;
+		margin-left: 300px;
+		margin-right: 250px;
+	}
+	.sub{
+		background-color: red;
+		width: 300px;
+		margin-left: -100%;
+		left: -300px;
+	}
+	.extra{
+		background-color: blue;
+		width: 250px;
+		margin-left: -250px;
+		right: -250px;
+	}
+	</style>
+</head>
+<body>
+	<div class="header"><h2>Header</h2></div>
+	<div class="main">
+		<div class="main-inner">
+			<h3>main-inner</h3>
+			<p>这是页面的中间部分这是页面的中间部分这是页面的中间部分这是页面的中间部分这是页面的中间部分这是页面的中间部分这是页面的中间部分这是页面的中间部分这是页面的中间部分这是页面的中间部分这是页面的中间部分这是页面的中间部分这是页面的中间部分这是页面的中间部分这是页面的中间部分这是页面的中间部分这是页面的中间部分这是页面的中间部分这是页面的中间部分这是页面的中间部分这是页面的中间部分这是页面的中间部分这是页面的中间部分这是页面的中间部分这是页面的中间部分这是页面的中间部分</p>
+		</div>
+	</div>
+	<div class="sub">
+		<p>这是页面的左边部分这是页面的左边部分这是页面的左边部分这是页面的左边部分这是页面的左边部分这是页面的左边部分这是页面的左边部分</p>
+	</div>
+	<div class="extra">
+		<p>这是页面的右边部分这是页面的右边部分这是页面的右边部分这是页面的右边部分这是页面的右边部分这是页面的右边部分这是页面的右边部分这是页面的右边部分这是页面的右边部分这是页面的右边部分这是页面的右边部分这是页面的右边部分</p>
+	</div>
+	<div class="footer">Footer</div>
+</body>
+</html>
