@@ -1,0 +1,299 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+ul{
+	list-style-type: none;
+}
+a{
+	text-decoration: none;
+	color: white;
+}
+.clear{
+	clear: both;
+}
+.header{
+	width: 100%;
+	height: 60px;
+	background-color: #07cbc9;
+}
+.header .logo{
+	line-height: 60px;
+}
+.header .logo img{
+	width: 220px;
+	height: 34px;
+	float: left;
+	margin-left:150px;
+	margin-top: 13px; 
+}
+.header .nav ul{
+	width: 490px;
+	float: right;
+}
+.header .nav li{
+	line-height: 60px;
+	font-size: 12px;
+	font-family: "Microsoft YaHei UI";
+	padding-left: 10px;
+	padding-right: 10px;
+	float: left;
+	color: white;
+}
+.header .nav li:hover{
+	background-color: black;
+}
+.banner{
+	position: relative;
+	width: 100%;
+	height: 500px;
+}
+.banner img{
+	width: 100%;
+	height: 500px;
+	position: absolute;
+}
+.banner .hidden{
+	width: 100%;
+	height: 500px;
+	opacity: 0.5;
+	background-color: black;
+	z-index: 1;
+	position: absolute;
+}
+.banner .message{
+	opacity: 0.6;
+	font-family: "Microsoft YaHei UI";
+	font-size: 12px;
+	color: white;
+	margin-top: 100px;
+	z-index: 2;
+	position: absolute;
+	text-align: center;
+	width: 366px;
+	right: 50%;
+	margin-right: -183px;
+}
+.banner .message input,
+.banner .message textarea{
+	background: none;
+	display: inline-block;
+	text-align: left;
+	border: 1px solid white;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	padding-left: 4px;
+	margin-top: 15px;
+	width: 360px;
+	color: #07cbc9;
+}
+.banner .message input:hover,
+.banner .message textarea:hover{
+	border-color: #07cbc9;
+}
+.banner .message button:hover{
+	background-color: #07cbc9;
+}
+.banner .message button{
+	background: none;
+	display: inline-block;
+	text-align: center;
+	border: 1px solid white;
+	padding: 8px;
+	margin-top: 20px;
+	color: white;
+	font-style: 8px;
+}
+
+/*about区*/
+.about{
+	width: 780px;
+	margin: 0 auto;
+}
+.about .word h1{
+	width: 100%;
+	margin-top: 40px;
+	text-align: center;
+}
+/*多个stub小短线可以设置同一个class，共用一个样式。*/
+.stub{
+	width: 25px;
+	border: 1px solid #07cbc9;
+	margin: 15px auto;
+}
+.about .word p{
+	width: 390px;
+	font-size: 8px;
+	margin: 0 auto 20px;
+	text-align: center;
+	color: grey;
+}
+.about .show{
+	width: 100%;
+	position: relative;
+}
+.about .show img{
+	width: 450px;
+	height: 290px;
+	margin-left: 150px;
+	margin-bottom: 50px;
+}
+.about .show .awordaboutus{
+	font-size: 24px;
+	position: absolute;
+	top: 0;
+}
+.about .show .paragraph{
+	width: 220px;
+	height: 145px;
+	background: rgba(255,255,255,0.4);
+	border: 1px solid #c0c0c0;
+	opacity: 0.8;
+	padding: 15px;
+	position: absolute;
+	top: 70px;
+}
+.about .show .paragraph p{
+	font-size: 12px;
+	word-break: break-all;
+}
+/*多个explore按钮可以设置同一个class，共用一个样式。*/
+.btnexplore{
+	background-color: black;
+	padding: 6px;
+	/*color: white;*/
+	font-size: 10px;
+	border: black;
+}
+.about .show .btnexplore{
+	position: absolute;
+	top: 185px;
+	left: 15px;
+}
+.about .show button:hover{
+	border: 1px solid black;
+	background-color: white;
+}
+.about .show .btnexplore a:hover{
+	color: black;
+}
+.about .show .students{
+	width: 150px;
+	height: 100px;
+	float: right;
+	border: 1px solid #07cbc9;
+	text-align: center;
+	padding-top: 6px;
+}
+.about .show .faculty{
+	margin-top: 140px;
+	margin-right: -152px;
+}
+.about .show .students .num{
+	font-size: 20px;
+}
+.about .show .students span{
+	font-size: 14px;
+	display: inline-block;
+	margin: 0 auto;
+}
+
+/*EXPLORE八格探索区*/
+.explore{
+	width: 100%;
+	height: 600px;
+	min-width: 600px;
+}
+.explore .one div ,
+.explore .two div{
+	width: 25%;
+	height: 300px;
+	float: left;
+	overflow: hidden;
+}
+.explore img{
+	width: 100%; 
+	height: 300px;
+}
+.explore .textbox{
+	width: 100%;
+	height: 300px;
+	background-color: #07cbc9;
+	color: white;
+	position: relative;
+}
+.explore .textbox h2{
+	font-weight: normal;
+	margin-top: 20px;
+	margin-left: 25px;
+}
+.explore .textbox .textone{
+	font-size: 15px;
+	padding: 12px 25px;
+}
+.explore .textbox .texttwo{
+	font-size: 12px;
+	padding: 12px 25px;
+	opacity: 0.8;
+}
+.explore .btnexplore{
+	display: block;
+	margin: 20px auto;
+}
+.explore button:hover{
+	background-color: #07cbc9;
+	border: 1px solid black;
+}
+
+/*GALLERY区*/
+.gallery{
+	width: 890px;
+	margin: 0 auto 30px;
+}
+.gallery .word h1{
+	width: 100%;
+	margin-top: 40px;
+	text-align: center;
+}
+.gallery .word p{
+	width: 390px;
+	font-size: 8px;
+	margin: 0 auto 20px;
+	text-align: center;
+	color: grey;
+}
+.gallery img{
+	width: 270px;
+	height: 170px;
+	display: block;
+}
+.gallery dd{
+	display: inline-block;
+	width: 255px;
+	height: 40px;
+	background-color: black;
+	color: white;
+	line-height: 40px;
+	padding-left: 15px;
+	font-size: 12px;
+}
+/*footer*/
+.footer{
+	width: 100%;
+	height: 60px;
+	background-color: #07cbc9;
+}
+.footer p{
+	font-size: 14px;
+	text-align: center;
+	color: white;
+	line-height: 60px;
+}
+
+
+
+
+
+
+
+
