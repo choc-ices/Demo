@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>拖拽本地图片上传</title>
+	<style type="text/css">
+		body{
+			margin: 0;
+		}
+		#box{
+			width: 300px;
+			min-height: 300px;
+			border: 2px solid #fce;
+			margin: 20px auto 0;
+		}
+		span{
+			width: 300px;
+			height: 300px;
+			color: #c53;
+			font-size: 20px;
+			text-align: center;
+			display: block;
+			line-height: 300px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"><span>嗨，图片放这里 o！</span></div>
+	<script type="text/javascript">
+		document.ondragover=function(e){
+			e.preventDefault();
+		}
+		document.ondrop=function(e){
+			//阻止浏览器在新窗口中打开本地图片
+			e.preventDefault();
+		}
+
+		//目标对象事件
+		// var oSpan=document.getElementById("box").getElementsByTagName("span");
+		var oSpan=document.querySelector("#box span");
+		var tag=0;
+		//拖拽模块
+		box.ondragover=function(e){
+			e.preventDefault();
+			oSpan.style.display="none";
+			console.log("over");
+		}
+		box.ondrop=function(e){
+			e.preventDefault();
+			var imgFiles=e.dataTransfer.files;
+			for(var i=0;i<imgFiles.length;i++){
+				var imgRead=new FileReader();//文件读取器
+				imgRead.readAsDataURL(imgFiles[i]);//要读取的文件对象
+				imgRead.onload=function(){
+					//console.log(this.result);
+					console.log(i+"张图片的数据读取完成");
+					var img=new Image();
+					img.src=this.result;
+					img.style.width="100px";
+					img.style.height="100px";
+					box.appendChild(img);
+					tag=1;
+				}
+			}
+		}
+		// box.ondragleave=function(e){
+		//     e.preventDefault();
+		//     if(tag==0){
+		//     	oSpan.style.display="block";
+		//     }
+		// 	console.log("leave");
+		// }
+		//ondragleave事件会导致div内的文字交替闪烁；且导致阻止浏览器在新窗口打开本地图片失败。
+	</script>
+</body>
+</html>
