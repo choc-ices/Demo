@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>slide</title>
+	<!-- <link rel="stylesheet" type="text/css" href="font_b1bgmevp85/iconfont.css"> -->
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			border: none;
+		}
+		/*iconfont.css  使用class形式引入应用*/
+		@font-face {font-family: "iconfont";
+		src: url('iconfont.eot?t=1547780570039'); /* IE9 */
+		src: url('iconfont.eot?t=1547780570039#iefix') format('embedded-opentype'), /* IE6-IE8 */
+			url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAALYAAsAAAAABrgAAAKKAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDBgqBHIEXATYCJAMMCwgABCAFhG0HPBvjBcgekiSBSggUgYgKAhgoHr72ez13dz+iSxSgykQCjo/iItkaASRdhaytUGVb2XmDa22PSXupS+BvlhCRfNxt+/35brhmt2glkCCaJRoNCCD83+e5nN4EOpC76luW05o29vKjXoBxQIGONSigQEskEM9geeVBukGvDhNoW1TGdlrX0gOyFNGoQLyiRABZvaiiqEJTqM8sLOKzmmZ6kx7wqfx+/LEdWSS1LJp49qRWAhXfA38XeabiVk6IEejyGjK2AIW4M5u9lCoUl6ptTluvrCtCuipRnVLtW+sf/eMloi6q74I1mkt8D6Rygu8XSySQQb2fXwZsM3Z6UYjxRFjb3HURvLl3deFAGzN2aX38nWNjp3wjtLF9funEm7MushWbzv47IWP3E18T43zf05XfvlH/8tOIwodi9uvNAlp0UnRMV1q7R4J3deP64O0euAegkj5zkvxuaSOLwIZg5f/3y7uD3X/NTgHfyIN3EqkUgNs1f+ELjEwDthRfF9lycdWpOvRnE8CdoEodUBUFx76PW2dwM6FpdsDfsNAia1oiC7uFmo4d1DUdoG1T/fKOCSZVlBY2LBKEoWskfV+QDT2Shf1Czdw/6oaRirbzmGzYsRI054QhgSMJDoxCKuoaThw8p2rsQmRQEVhXV/J9iFk0AX1u77BQjzTErphiDRE/5xhipquwjhyHFEWHBtOTSOTuBOdG3OPBcy9yi7oKcpxgEAGHSKABoyBKpNPgvDOXM/p8F4QYpBCwFVFPsQ/CWGjvkI+bFyDrzRok+pVnLEMIP47DIIzRqaA60g9RKHSQMd8vCRFxbokDaUOcJ26HUbP7eatqvl3QFi3PkSJH0XhBBY3rg1mlxwcAAAA=') format('woff2'),
+			url('iconfont.woff?t=1547780570039') format('woff'),
+			url('iconfont.ttf?t=1547780570039') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+			url('iconfont.svg?t=1547780570039#iconfont') format('svg'); /* iOS 4.1- */
+		}
+
+		.iconfont {
+			font-family: "iconfont" !important;
+			font-size: 38px;
+			font-style: normal;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+		}
+
+		.icon-jiantou:before {
+			content: "\e633";
+		}
+
+		.icon-jiantou1:before {
+			content: "\e6a5";
+		}
+
+		#main{
+			width: 840px;
+			height: 570px;
+			margin: 0 auto;
+			overflow: hidden;
+		}
+		#main:hover{
+			cursor: pointer;
+		}
+		/*标签区*/
+		#list{
+			height: 70px;
+			font-size: 0;
+		}
+		#list li{
+			width: 25%;
+			display: inline-block;
+			list-style-type: none;
+			line-height: 70px;
+			font-size: 22px;
+			text-align: center;
+			/*color: #ffcc00;*/
+		}
+		/*轮播图图片区*/
+		#box{
+			position: relative;
+			width: 840px;
+			height: 500px;
+		}
+		.slide{
+			position: absolute;
+			display: none;
+		}
+		.slide-active{
+			display: block;
+		}
+		#box img{
+			width: 840px;
+			height: 500px;
+		}
+		#littleCircle{
+			position: absolute;
+			bottom: 10px;
+			left: 50%;
+			margin-left: -50px;
+		}
+		#littleCircle li{
+			list-style-type: none;
+			float: left;
+			width: 8px;
+			height: 8px;
+			border: 2px solid #ddd;
+			border-radius: 50%;
+			margin: 8px;
+			background-color: transparent;
+		}
+		#littleCircle li:hover{
+			background-color: #ddd;
+		}
+		/*//左*/
+		.icon-jiantou1{
+			left: 10px;			
+		}
+		/*//右*/
+		.icon-jiantou{
+			right: 10px;
+		}
+		.icon-jiantou,
+		.icon-jiantou1{
+			position: absolute;
+			z-index: 99;
+			height: 60px;
+			width: 40px;
+			background-color: rgba(200,200,200,0.3);
+			top: 50%;
+			margin-top: -30px;
+			padding-top: 17px;
+			border-radius: 2px;
+		}
+		.icon-jiantou:hover,
+		.icon-jiantou1:hover{
+			background-color: rgba(200,200,200,0.7);
+		}
+	</style>
+	<script src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="main">
+	<!-- Title -->
+	<ul id="list">
+		<li style="background:#ffcc00;">星云</li>
+		<li>四叶草</li>
+		<li>秋阳</li>
+		<li>落花</li>
+	</ul>
+	<!-- 盒子 -->
+	<div id="box">
+		<div class="slide slide-active">
+			<a href="#"><img src="images/1.jpg"></a>
+		</div>
+		<div class="slide">
+			<a href="#"><img src="images/2.jpg"></a>
+		</div>
+		<div class="slide">
+			<a href="#"><img src="images/3.jpg"></a>
+		</div>
+		<div class="slide">
+			<a href="#"><img src="images/4.jpg"></a>
+		</div>
+		<div id="littleCircle">
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+		<div class="iconfont icon-jiantou"></div>
+		<div class="iconfont icon-jiantou1"></div>
+	</div>
+</div>
+<script type="text/javascript">
+
+/***
+	轮播：
+	1、timer=定时器setInterval（显示第index张图片，1500）
+	1.1 显示第index张图片：
+	index>li.length?0:index;
+	图片div选择器.show().sblings().hide();
+	li和小圆点同理（两者取一）
+	小圆点选择器.background-color......
+
+	2、鼠标hover进div图片区clearInterval（）；
+	2.1 点击小圆点定位到相应图片，获取小圆点index()（显示相应index图片）
+*/
+	$(document).ready(function(){
+		var control=0;//控制显示索引
+		var timer=null;//存储定时器
+
+		//开始定时轮播
+		function start(){
+			timer=setInterval(function(){
+				changeImg();
+				control++;
+			},1500);
+		}
+		
+		//切换到第control张图片，显示第control张图片的函数
+		function changeImg(){
+			for(var i=0;i<$('#littleCircle li').length;i++){
+				$('#box .slide').eq(i).hide();
+				$('#list li').eq(i).css('background-color','#fff');
+				$('#littleCircle li').eq(i).css('background-color','transparent');
+			}
+			if(control>=($('#box .slide').length)){
+				control=0;
+			}else if(control<0){
+				control=3;
+			}
+			console.log("切换图片"+control);
+			$('#box .slide').eq(control).show();
+			$('#list li').eq(control).css('background-color','#fc0');
+			$('#littleCircle li').eq(control).css('background-color','#ddd');
+		}
+
+
+		//开始
+		start();
+		//.hover()了，清除定时器
+		$('#main').hover(function(){
+			clearInterval(timer);
+		},function(){
+			start();
+		});
+		//点击list和小圆点，点哪个切哪个
+		$('#list li,#littleCircle li').click(function(){
+			control=$(this).index();
+			console.log("点击"+control);
+			changeImg();
+		})
+		//点击左右按钮切换
+		$('.icon-jiantou1').click(function(){
+			control--;
+			console.log("左"+control);
+			changeImg();
+		})
+		$('.icon-jiantou').click(function(){
+			control++;
+			console.log("右"+control);
+			changeImg();
+		})
+	});
+
+	
+</script>
+</body>
+</html>
