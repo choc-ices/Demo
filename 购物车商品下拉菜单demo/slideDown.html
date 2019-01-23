@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>slideDown</title>
+	<script src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	body{
+		margin: 20px 0 0 20px;
+	}
+	/*购物车*/
+	.shoppingCart{
+		width: 135px;	
+		height: 30px;
+		line-height: 30px;
+		color: #fff;
+		background-color: red;
+		font-size: 15px;
+		text-align: center;
+		position: relative;
+		right: 280px;
+		top: 0px;
+		float: right;
+		z-index: 2;
+		cursor: pointer;
+	}
+	/*购物车下拉*/
+	#slideDown{
+		width: 280px;	
+		height: 400px;
+		background-color: #f3f5f7;
+		display: none;
+		position: relative;
+		float: right;
+		z-index: 100;
+		top: 30px;
+		right: 0px;
+		font-size: 12px;
+		color: #333;
+		cursor: pointer;
+		border: 1px solid #ddd;
+	}
+	#slideDown .list,
+	#slideDown .count{
+		width: 100%;
+		height: 50px;
+		line-height: 50px;
+		background-color: #f3f5f7;
+		padding-left: 8px;
+		box-sizing: border-box;
+	}
+	#slideDown .showList{
+		height: 300px;
+		width: 100%;
+		background-color: #f3f5f7;
+		overflow: auto;/*当需要实现内容太多生成滚动条时使用overflow:auto;*/
+		border-top: 1px solid #ddd;
+		border-bottom: 1px solid #ddd;
+		box-sizing: border-box;
+	}
+	#slideDown .showList li{
+		list-style-type: none;
+		width: 90%;
+		height: 60px;
+		margin: 0 10px;
+		border-bottom: 1px solid #ddd;
+	}
+	#slideDown button{
+		height: 25px;
+		width: 65px;
+		display: inline-block;
+		text-align: center;
+		line-height: 18px;
+		color: #fff;
+		border-radius: 2px;
+		background-color: red;
+		border: none;
+		margin-left: 5px;
+
+	}
+	#slideDown .showList .cartthings{
+		display: inline-block;
+		width: 150px;
+		overflow: hidden;
+		margin: auto 5px;
+	}
+	#slideDown .showList .cartClose{
+		float: right;
+		margin-right: 10px;
+		margin-top: 20px;
+	}
+	/*当shoppingCart为slideDown的父元素时，可以直接用css实现显示隐藏*/
+	/*.shoppingCart:hover #slideDown{
+		display: block;
+	}*/
+	</style>
+</head>
+<body>
+	<!-- 购物车 -->
+	<div class="shoppingCart">
+		<span><img src="images/26.png">&nbsp;&nbsp;购物车 &nbsp;|</span>
+		<span class="number">&nbsp;0&nbsp;&nbsp;<img src="images/23.png"></span>
+	</div>
+	<div class="clearFloat"></div>	
+	<div id="slideDown">
+		<div class="list">最新加入的商品</div>
+		<div class="showList">
+			<ul>
+				<li>
+					<img src="images/cart/1.png" />
+					<span class="cartthings">addais运动衣 吸汗 男子<br /><span>￥335 x 1</span></span>
+					<span class="cartClose">X</span>
+				</li>
+				<li>
+					<img src="images/cart/2.png" />
+					<span class="cartthings">玉兰油多效护理套装<br /><span>￥199 x 2</span></span>
+					<span class="cartClose">X</span>
+				</li>
+				<li>
+					<img src="images/cart/3.png" />
+					<span class="cartthings">Apple iPhone7(A1660)<br /><span>￥6188 x 1</span></span>
+					<span class="cartClose">X</span>
+				</li>
+				<li><img src="images/cart/4.png" />
+					<span class="cartthings">飞利浦面条机 HR2356/31<br /><span>￥659 x 4</span></span>
+					<span class="cartClose">X</span>
+				</li>
+				<li>
+					<img src="images/cart/5.png" />
+					<span class="cartthings">罗技G29 游戏用品<br /><span>￥2999 x 1</span></span>
+					<span class="cartClose">X</span>
+				</li>
+				<li>
+					<img src="images/cart/book.jpg">
+					<span class="cartthings">《编译原理》 人民邮电出版社<br /><span>￥33 x 1</span></span>
+					<span class="cartClose">X</span>
+				</li>
+			</ul>
+		</div>
+		<div class="count">
+			商品总数：
+			<span class="number">6</span>
+			&nbsp;&nbsp;&nbsp;共计：$
+			<span>0:00</span>
+			<button type="button" value="gotoShoppingCart" name="gotoShoppingCart">去购物车</button>
+		</div>
+	</div>
+	<script>
+		$('.shoppingCart,#slideDown').mouseenter(function(){
+			$('#slideDown').css('display','block');
+		});
+		$('.shoppingCart,#slideDown').mouseleave(function(){
+			$('#slideDown').css('display','none');
+		});
+	</script>
+</body>
+</html>
