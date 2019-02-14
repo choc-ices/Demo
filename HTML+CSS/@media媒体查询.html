@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>@media媒体查询</title>
+	<style type="text/css">
+	.top{
+		text-align: center;
+	}
+	.left{
+		float: left;
+		width: 40%;
+		height: 200px;
+		line-height: 200px;
+		background-color: pink;
+	}
+	.right{
+		float: right;
+		width: 60%;
+		height: 200px;
+		line-height: 200px;
+		background-color: lightblue;
+	}
+	@media screen and (max-width:700px) and (min-width: 400px){
+		.left{
+			width: 100%;
+			background-color: #f2f4f6;
+			clear: both;
+		}
+		.right{
+			width: 100%;
+			background-color: #f6f4f2;
+			clear: both;
+		}
+	}
+	</style>
+</head>
+<body>
+	<div class="top">
+		<div class="left">这是左边</div>
+		<div class="right">这是右边</div>
+	</div>
+</body>
+</html>
