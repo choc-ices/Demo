@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+	<title>H5</title>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+	a{
+		text-decoration: none;
+	}
+	header{
+		width: 100%;
+		background-color: rgb(46,46,46);
+		line-height: 95px;
+		height: 95px;
+		padding-left: 170px;
+		padding-right: 150px;
+	}
+	nav{
+		float: right;
+	}
+	nav a{
+		color: #fff;
+		padding-left: 50px;
+	}
+	#banner{
+		width: 100%;
+		height: 680px;
+		background-image: url(img/banner.jpg);
+		background-repeat: no-repeat;
+		text-align: center;
+		color: #fff;
+		background-size: cover;
+	}
+	#banner h1{
+		font-size: 60px;
+		padding-top: 270px;
+	}
+	#banner p{
+		font-size: 20px;
+		padding-top: 20px;
+	}
+	#portfolio{
+		height: 415px;
+		background-color: #fff;
+		text-align: center;
+	}
+	#portfolio h2,
+	#stats h2,
+	#team h2,
+	#contact h2{
+		color: orange;
+		letter-spacing: 8px;
+		padding-top: 120px;
+		font-size: 30px;
+		text-align: center;
+	}
+	#portfolio p,
+	#stats p,
+	#team p,
+	#contact p{
+		padding-top: 55px;
+		width: 790px;
+		font-size: 16px;
+		margin: 0 auto;
+	}
+	#stats{
+		height: 580px;
+		text-align: center;
+	}
+	#team{
+		color: #fff;
+		height: 665px;
+		text-align: center;
+		background-color: rgb(46,46,46);
+	}
+	#contact{
+		height: 845px;
+		text-align: center;
+	}
+	#portfolio button{
+		background-color: #fff;
+		color: orange;
+		border: 1px solid orange;
+		padding: 15px;
+		margin: 70px 10px 10px;
+	}
+	#card{
+		width: 100%;
+		height: 763px;
+		background-image: url(img/portfolio-nav-img.jpg);
+		background-repeat: no-repeat;
+		background-size: 100%;
+	}
+	.statsCard{
+		display: inline-block;
+		width: 270px;
+		padding: 65px 60px;
+	}
+	.statsText{
+		font-size: 16px;
+		padding-top: 30px;
+	}
+	.statsNum{
+		font-size: 26px;
+		color: orange;
+		padding-top: 30px;
+		letter-spacing: 5px;
+	}
+	.teamPart{
+		width: 300px;
+		display: inline-block;
+		padding-top: 65px;
+		font-size: 14px;
+	}
+	.teamPart .name{
+		font-size: 16px;
+	}
+	#contact input{
+		border: 1px solid #bbb;
+		width: 460px;
+		height: 60px;
+		padding: 15px;
+		margin: 70px 12px 20px 12px;
+	}
+	#contact textarea{
+		resize: none;
+		width: 950px;
+		height: 275px;
+		line-height: 275px;
+		overflow: hidden;
+		padding: 15px;
+	}
+	#contact button{
+		color: #fff;
+		background-color: orange;
+		font-size: 22px;
+		height: 55px;
+		width: 200px;
+		border: none;
+		display: block;
+		margin: 30px auto;
+	}
+	footer{
+		height: 110px;
+		line-height: 110px;
+		color: #fff;
+		font-size: 16px;
+		text-align: center;
+		background-color: #000;
+	}
+	</style>
+</head>
+<body>
+<header>
+	<a href="#"><img src="img/logo.jpg"></a>
+	<nav>
+		<a href="">HOME</a>
+		<a href="">PORTFOLTO</a>
+		<a href="">TEAM</a>
+		<a href="">CONTACT US</a>
+	</nav>
+</header>
+<section id="banner">
+	<h1>Welcome to website</h1>
+	<p>We hope that all the students who love the Internet to learning resources</p>
+</section>
+<section id="portfolio">
+	<h2>Portfolio</h2>
+	<p>Lorem we hope that all the students who love the Internet can be more convenient access to learning resources We hope that all the students</p>
+	<button>ALL</button>
+	<button>WEB</button>
+	<button>SOFTWARE</button>
+	<button>WORKS</button>
+	<button>BRANDS</button>
+</section>
+<section id="card"></section>
+<section id="stats">
+	<h2>Stats</h2>
+	<p>Lorem we hope that all the students who love the Internet can be more convenient access to learning resources We hope that all the students</p>
+	<div class="statsCard"><img src="img/stats1.jpg"><div class="statsText">Margins</div><div class="statsNum">12,000</div></div>
+	<div class="statsCard"><img src="img/stats2.jpg"><div class="statsText">Completed</div><div class="statsNum">5,681</div></div>
+	<div class="statsCard"><img src="img/stats3.jpg"><div class="statsText">Projects</div><div class="statsNum">432</div></div>
+	<div class="statsCard"><img src="img/stats4.jpg"><div class="statsText">Customers</div><div class="statsNum">86</div></div>
+</section>
+<section id="team">
+	<h2>Team</h2>
+	<p>Lorem we hope that all the students who love the Internet can be more convenient access to learning resources We hope that all the students</p>
+	<div class="teamPart"><img src="img/team1.jpg"><div class="name">Abigall</div><div>Lorem njihgjkj convenient</div><div>adipolic</div></div>
+	<div class="teamPart"><img src="img/team2.jpg"><div class="name">Andy</div><div>Lorem njihgjkj cenient</div><div>adipolic</div></div>
+	<div class="teamPart"><img src="img/team3.jpg"><div class="name">Jascaglin</div><div>Lorem njihgj kjnvenient</div><div>adipolic</div></div>
+</section>
+<section id="contact">
+	<h2>Contact Us</h2>
+	<p>Lorem we hope that all the students who love the Internet can be more convenient access to learning resources We hope that all the students</p>
+	<form>
+		<input type="text" name="FullName" placeholder="Full Name">
+		<input type="text" name="email" placeholder="Email">
+		<textarea rows="3" cols="20" placeholder="Message"></textarea>
+		<button type="Submit">Submit Message</button>
+	</form>
+</section>
+<footer>Copyright &copy; 2019.Company name</footer>
+</body>
+</html>
