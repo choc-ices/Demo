@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>progress</title>
+</head>
+<body>
+	<progress max="100" style="width: 500px" value="0" id="pg"></progress> 
+	<span id="number">0</span>
+</body>
+<script type="text/javascript">
+	/*实现进度条的功能*/
+	var pg=document.getElementById('pg'); 
+	setInterval(function(e){ 
+		if(pg.value!=100) pg.value++; 
+		//else pg.value=0; 
+		document.getElementById("number").innerHTML=pg.value+"%";
+	},200);  // 20秒从0%到100%
+</script>
+</html>
+
+ 
+
