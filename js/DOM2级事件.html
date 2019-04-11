@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>test</title>
+</head>
+<body>
+
+<button type="button" value="click me" id="btn">Dom2级事件绑定方式</button>
+<!-- 注意clickFn事件后要加（）； -->
+<script>
+	//DOM2级事件
+	function clickFn(){
+		alert("Dom2级事件绑定方式执行");
+		document.getElementById("btn").style.background = "grey";
+	}
+	var btn = document.getElementById("btn");
+	btn.addEventListener('click',clickFn,false);
+
+	/**
+	* 1. HTML事件是在html中定义    缺点：强耦合
+	* 2. DOM0级事件，是给事件对象的属性添加绑定事件    缺点：btn只能绑定一个事件
+	* 3. DOM2级事件，通过addEventListener函数绑定事件    优点：松耦合，能绑定多个事件，支持捕获或者冒泡（默认false冒泡）
+	*/
+
+
+	//事件解绑
+	//ele.removeEventListener(event,function,useCapture)
+	//移除addEventLisener()方法添加的事件句柄，如果两个函数都是匿名函数，会认为是两个不同的函数，移除不会起作用。
+	//useCapture : 布尔值，可选。
+
+	//IE8及以下
+	//ele.attachEvent(event,function);  默认冒泡，无第三个参数
+	//ele.detachEvent(event,function);
+
+
+	//浏览器兼容性
+	//element --> btn 事件对象
+	//type --> click 事件类型
+	//handler --> function(){} 事件句柄
+	var EventUtil = {
+		addHandler: function(element,type,handler){
+			//绑定事件
+			//chrom、firefox、IE9等  addEventListener
+			//IE8及其以下  attachEvent
+			if(element.addEventListener){
+				element.addEventListener(type, handler, false);
+			}else if(element.attachEvent){
+				element.attachEvent("on" + type, handler);
+			}else{
+				element["on" + type] = null;
+			}
+		},
+		removeHandler: function(element, type, handler){
+			//移除事件
+			//chrom、firefox、IE9等  removeEventListener
+			//IE8及其以下  detachEvent
+		}
+	}
+
+	//测试
+	// EventUtil.addHandler(btn,"click",clickFn);
+</script>
+</body>
+</html>
