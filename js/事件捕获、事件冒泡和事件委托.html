@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>事件冒泡和事件捕获</title>
+</head>
+<body>
+	<div id="parent">
+		<div id="child" class="child">点击儿子</div>
+	</div>
+
+	<ul id="ul">
+		<li id="one">item1</li>
+		<li id="two">item2</li>
+		<li id="three">item3</li>
+		<li id="four">item4</li>
+		<li id="five">item5</li>
+		<li id="six">item6</li>
+	</ul>
+<script>
+	//事件冒泡
+	//--*-*-直系亲属-*-*--树结构中，点击某个元素，由于冒泡作用，亲属树上的元素凡是添加的事件都会被触发（从子元素到父元素依次触发）。
+	// document.getElementById("parent").addEventListener("click",function(e){
+	// 	alert("parent事件被触发，"+this.id);
+	// });
+	// document.getElementById("child").addEventListener("click",function(e){
+	// 	alert("child事件被触发，"+this.id);
+	// });
+
+	//事件捕获
+	//--*-*-直系亲属-*-*--树结构中，点击某个元素，由于捕获作用，亲属树上的元素凡是添加的事件都会被触发（从父元素到子元素依次触发）。
+	// document.getElementById("parent").addEventListener("click",function(e){
+	// 	alert("parent事件被触发，"+this.id);
+	// },true);
+	// document.getElementById("child").addEventListener("click",function(e){
+	// 	alert("child事件被触发，"+this.id);
+	// },true);
+
+	//事件委托  原理就是事件冒泡
+	//多个子元素，只给父元素添加一次事件，就可以通过点击子元素触发父元素事件执行
+	var ul = document.getElementById("ul");
+	ul.addEventListener("click",function(){alert(event.target.id)});
+</script>
+</body>
+</html>

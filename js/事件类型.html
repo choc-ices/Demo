@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>事件类型</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var EventUtil = {
+			addHandler: function(element, type, handler) {
+				//绑定事件
+				//Chrome Firefox IE9等     addEventListener 
+				//IE8及IE8以下的浏览器     attachEvent 
+				if(element.addEventListener) {
+					element.addEventListener(type, handler, false);
+				} else if(element.attachEvent) {
+					element.attachEvent("on" + type, handler);
+				} else {
+					element["on" + type] = handler
+				}
+			},
+			removeHandler: function(element, type, handler) {
+				//移除事件
+				//Chrome Firefox IE9等      
+				//IE8及IE8以下的浏览器     
+				if(element.removeEventListener) {
+					element.removeEventListener(type, handler, false);
+				} else if(element.detachEvent) {
+					element.detachEvent("on" + type, handler);
+				} else {
+					element["on" + type] = handler
+				}
+			},
+			getTarget: function(event) {
+				return event.target || event.srcElement;
+			},
+			preventDefault: function(event) {
+				if(event.preventDefault) {
+					event.preventDefault();
+				} else {
+					event.returnValue = false;
+				}
+			},
+			stopPropagation: function(event) {
+				if(event.stopPropagation) {
+					event.stopPropagation()
+				} else {
+					event.cancelBubble = true;
+				}
+			}
+		}
+
+		//UI事件
+		//当页面完全加载后在window上面触发
+		EventUtil.addHandler(window,"load",function(e){
+			alert("loading!");
+		});
+
+		//img标签加载完毕
+		var image = document.createElement("img");
+		EventUtil.addHandler(image,"load",function(e){
+			alert("图片加载完毕！");
+		})
+		image.src = "1.jpg";
+
+		//图片预加载
+		var image = new Image();  //把图片缓存到内存上面
+		EventUtil.addHandler(image,"load",function(e){
+			alert("Image loaded！");
+		})
+		image.src = "smile.gif";
+
+		//......
+	</script>
+</body>
+</html>

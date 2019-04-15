@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Event对象常用属性和方法</title>
+	<style type="text/css">
+		#gaodu{
+			height: 2000px;
+			background-color: lightgreen;
+		}
+	</style>
+</head>
+<body>
+	<div id="parent">
+		<div id="child" class="child">点击儿子</div>
+	</div>
+	<br />
+	<a href="http://www.baidu.com" id="jump">跳转链接</a>
+	<br />
+	<div id="gaodu"></div>
+	<script type="text/javascript">
+		/*****
+
+		//event.type
+		//event.target
+		//event.currentTarget
+		var parent = document.getElementById("parent");
+		parent.addEventListener("click",function(event){
+			//event
+			console.log(event.type);  //click  //告诉我们现在的事件类型是什么 
+			console.log(event.target); //事件源。点击谁，谁就是target
+			console.log(event.currentTarget); //事件绑定在谁身上，谁就是currentTarget
+		});
+
+
+		//event.preventDefault  阻止默认行为
+		var jump = document.getElementById("jump");
+		//不阻止默认行为，会先弹出aLink，点击确定后，会跳转到百度的网站。
+		jump.addEventListener("click",function(e){
+			// e.preventDefault();
+			alert("aLink");
+		});
+
+		*****/
+
+		//event.stopPropagation  取消事件的捕获或者冒泡
+		var parent = document.getElementById("parent");
+		var child = document.getElementById("child");
+		parent.addEventListener("click",function(e){
+			alert("parent事件被触发，"+this.id);
+		});
+		child.addEventListener("click",function(e){
+			alert("child事件被触发，"+this.id);
+			e.stopPropagation();
+		});
+
+
+		//clientY 、pageY 、screenY
+		//clientY就是指浏览器顶部顶部底边到鼠标的位置，不包括滚动轴
+		//pageY就是指浏览器顶部顶部底边到鼠标的位置，计算滚动轴的距离
+		//screenY指屏幕顶部到鼠标位置，就算浏览器缩小也是从屏幕顶部算
+		var gaodu = document.getElementById("gaodu");
+		gaodu.addEventListener("click",function(e){
+			alert("clientY:"+e.clientY+"; pageY:"+e.pageY+"; screenY:"+e.screenY);
+		});
+
+		//attachEvent的event对象属性和方法和addEventListener不一样。此处不做赘述。
+	</script>
+</body>
+</html>
