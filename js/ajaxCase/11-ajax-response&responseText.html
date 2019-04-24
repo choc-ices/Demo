@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>AJAX-response&responseText</title>
+</head>
+<body>
+<script>
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET','test.php');
+	xhr.send();
+	//我们通过代码告诉浏览器请求代理对象，服务端响应给我们的是JSON
+	xhr.responseType = 'json';
+	xhr.onreadystatechange = function(){
+		if(this.readyState !== 4) return;
+		console.log(this);
+		//this.response  获取的结果会根据 this.responseType 的变化而变化
+		//this.responseText  永远获取的是字符串形式的响应体
+	}
+</script>
+</body>
+</html>

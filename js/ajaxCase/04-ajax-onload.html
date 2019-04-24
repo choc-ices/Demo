@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>online</title>
+</head>
+<body>
+<script type="text/javascript">
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET','time.php');
+	xhr.send(null);
+	//onload是HTML5中提供的XMLHttpRequest version 2.0定义的
+	xhr.onload = function(){
+		console.log(this.readyState);
+		console.log(this.responseText);
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>尝试找到一种可以发送不同源请求的方式</title>
+
+	<!-- link 真正的含义：链入一个文档，通过 rel 属性声明链入的文档与当前文档之间的关系 -->
+	<!-- 嵌入文章，文章的上一篇地址，下一篇地址
+	<link rel="prev" href="#">
+	<link rel="next" href="#"> -->
+</head>
+<body>
+	<!-- <img src="https://github.githubassets.com/images/modules/site/logos/node-logo.png"> -->
+	<!-- iframe就是在页面中挖一个坑，载入其他页面。  //iframe也可以发请求 -->
+	<!-- <iframe src="../load-partial refresh/index.html"></iframe> -->
+
+
+	<script>
+	// 请求一个不同源地址实际上就是我们所说的跨域请求
+	// 跨域和 ajax 有关系 也 没关系。跨域是解决ajax不能跨域的问题，跨域的实现和ajax没有关系
+
+	// 当前页面地址：http://localhost/ajaxcase/cross-domain/02-cross-origin.html
+	// 希望被请求的地址：http://api.douban.com/v2/movie/top250   或 http://locally.uieee.com/categories
+	//
+	//校验目标：1、能发出去；2、能收回来
+
+
+	// 方法：
+	// img  link  script  iframe  只要有就会发请求
+	// 表单和 a 链接，不能自动发请求，需要点一下才可以
+
+
+	// ## 1. img
+	// 可以发送不同地址之间的请求
+	// 无法拿到响应结果
+	// 或者用 var img = document.createElement();
+	// var img = new Image();
+	// img.src = 'http://api.douban.com/v2/movie/top250';
+
+	// ## 2. link
+	// 可以发送不同地址之间的请求
+	// 无法拿到响应结果
+	// var link = document.createElement('link');
+	// link.rel = 'stylesheet';
+	// link.href = 'http://api.douban.com/v2/movie/top250';
+	// document.body.appendChild(link);
+
+	// ## 3. script
+	// 可以发送不同地址之间的请求
+	// 无法拿到响应结果
+	// var script = document.createElement('script');
+	// script.src = 'http://api.douban.com/v2/movie/top250';
+	// document.body.appendChild(script);
+
+	// ## 4. script
+	// 
+	// script标签可以发送不同源地址之间的请求，也无法拿到服务端响应的结果。借助于能够作为 JS 执行。
+	// 当做 JS 引入的话，就可以当做 JS 去执行，相当于服务端主动的送东西
+	// 服务端相应作出改变，服务端返回一段 JS 代码，客户端相当于引入了JS文件，可直接执行。
+	// 
+	var script = document.createElement('script');
+	script.src = 'http://localhost/ajaxcase/time2.php';
+	document.body.appendChild(script);  //开始发起请求
+
+	// console.log(a);  //此处还没拿到服务端返回的数据
+
+	// 相当于请求的回调。但是不同于回调的是，回调是将函数作为参数传递过去，此处只是定义一下
+	function foo(res){
+		console.log(res);
+	}
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+	<title> Ajax 动态表格渲染</title>
+</head>
+<body>
+	<!-- 
+		处理数据渲染
+		模板引擎：art-template:https://aui.github.io/art-template/zh-cn/docs/installation.html
+		模板引擎实际上就是一个API，模板引擎有很多种，使用方式大同小异，目的是为了可以更容易的将数据渲染到HTML中
+	 -->
+	<table id="demo"></table>
+
+	<script type="text/javascript" src="template-web.js"></script>
+
+	<script id="tmpl" type="text/x-art-template">
+		<!-- each 内部 $value 拿到的是当前被遍历的那个元素 -->
+		{{each comments}}
+		<tr>
+			<td>{{$value.title}}</td>
+			<td>{{$value.year}}</td>
+			<td>{{$value.original_title}}</td>
+		</tr>
+		{{/each}}
+	</script>
+
+	<script type="text/javascript">
+		
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET','test.php');  //数据来源：http://api.douban.com/v2/movie/top250?star=5
+		xhr.send();
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState !== 4) return;
+			var res = JSON.parse(this.responseText);
+			// console.log(res);
+			//context为模板所需数据
+			var context = {comments: res.subjects};
+			//借助模板引擎的API渲染数据
+			var html = template('tmpl',context);
+			console.log(html);
+
+			document.getElementById('demo').innerHTML = html;
+			//1、选择一个模板引擎
+			//https://github.com/tj/consolidate.js#suppotted-template-engines
+			//2、下载模板引擎JS文件
+			//3、引入到页面中
+			//4、准备一个模板
+			//5、准备一个数据
+			//6、通过模板引擎的JS提供的一个函数将模板和数据整合得到渲染结果HTML
+			//7、将渲染结果的HTML设置到默认元素的innerHTML中
+		}
+
+	</script>
+	<!-- 
+		// var tmpl = {{if user}}<h2>{{user.name}}</h2>{{/if}}    //模板写在HTML中更直观，更好维护一点。但是写在HTML中会显示出来，所以用JS来显示在HTML中
+
+		//为什么不在JS变量中写模板？
+		//1、如果将模板写到JS中，维护不方便，不能换行，没有着色
+		//为什么使用script标记
+		1、script不会显示在界面上
+
+	 -->
+
+	 <!-- 
+	 	script标签的特点是：
+	 	1、innerHTML永远不会显示在界面上
+	 	2、如果type不等于text/javascript的话，内部的内容不会作为javascript执行
+	  -->
+</body>
+</html>

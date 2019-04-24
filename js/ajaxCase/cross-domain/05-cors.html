@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>AJAX 跨域(CORS)</title>
+	<!-- CORS:Cross Origin Resource Share(跨源的资源共享) -->
+</head>
+<body>
+	<!-- CORS 跨域资源共享：这种方案客户端无需做任何修改，只需要在被请求的服务端添加一个'Access-Control-Allow-Origin'的响应头，表示这个资源是否允许指定域请求 -->
+	<script src="../jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+		$.get('http://localhost/ajaxcase/cross-domain/cors.php', {}, function(res){
+			console.log(res);
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>主页面</title>
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="nprogress.css">
+	<script type="text/javascript" src="nprogress.js"></script>
+</head>
+<body>
+	<div class="container pt-4">
+		<h1>会员中心</h1>
+		<hr />
+		<div class="row">
+			<aside class="col-md-3">
+				<div class="list-group">
+					<a class="list-group-item list-group-item-action" href="index-nprogress.html">我的资料</a>
+					<a class="list-group-item list-group-item-action" href="cart.html">我的购物车</a>
+					<a class="list-group-item list-group-item-action" href="orders.html">我的订单</a>
+				</div>
+			</aside>
+			<main id="main" class="col-md-9">
+				<h2>我的个人资料</h2>
+				<hr>
+			</main>
+		</div>
+	</div> 
+	<script src="../jquery-1.11.3.min.js"></script>
+	<script>
+		$(function($){
+			$(document)
+				.ajaxStart(function(){
+					NProgress.start();
+					console.log("注意即将开始请求了");
+				}).ajaxStop(function(){
+					NProgress.done();
+					console.log("请求结束了");
+				})
+
+			//有一个独立的作用域，顺便确保页面加载完成执行
+			$('.list-group-item').on('click',function(){
+				var url=$(this).attr('href');
+				$('#main').load(url + ' #main > *');  //load(url,data,callback)  //局部刷新载入页面
+				return false;  //点击的时候不希望页面再去跳转，阻止默认事件
+			});
+		});
+	</script>
+</body>
+</html>

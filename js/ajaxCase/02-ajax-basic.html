@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>AJAX 快速上手（接收响应）</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	var xhr = new XMLHttpRequest();
+
+	xhr.open('GET','./time.php');
+	xhr.send();
+
+	//因为响应需要时间，所以无法通过返回值的方式返回响应
+	//var response = xhr.send();  //响应需要很久的话，代码就会一直等在这，因为JS是单线程的。
+	//console.log(response);
+
+	//如果需要捕获第一个状态的变化，需要注意代码执行顺序的问题（不要出现来不及的情况）
+	// xhr.onreadystatechange = function(){
+		//这个事件并不是只在响应时触发，XHR状态改变就触发
+		//console.log(1);  // 打印了三次
+		// console.log(this.readyState);  //打印2 3 4（一共有五个状态 0 1 2 3 4）
+	// }
+
+	//因为客户端永远不知道服务端何时才能返回我们需要的响应
+	//所以AJAX API采用事件的机制（通知的感觉）
+	xhr.onreadystatechange = function(){
+		if(this.readyState!==4 || this.status!==200) return
+		//console.log(this);  //打印出XMLHttpRequest对象，里面有responseText（永远拿到的是服务端响应给我们的响应的内容）
+	    //获取响应的内容（响应体）
+	    console.log(this.responseTest);
+	}
+
+	//or
+    //xhr.onreadystatechange = function(){
+	// 	if(this.readyState===4){
+	// 		console.log(this.responseTest);
+	// 	}
+	// }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>jQuery中AJAX的回调</title>
+</head>
+<body>
+	<script src="jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+
+		// 显示loading
+		$.ajax({
+			url:'time1.php',
+			type:'get',
+			beforeSend:function(xhr){
+				// 在所有发送请求操作（open send）之前执行
+				console.log('beforeSend',xhr);
+			},
+			// 只有请求成功（或状态码为200）才会执行这个函数
+			success:function(res){
+				console.log(res);
+			},
+			error:function(xhr){
+				// 只有请求不正常（状态码不为200）时才会执行
+				console.log('error',xhr);
+			},
+			complete:function(xhr2){
+				// 隐藏loading  不管成功还是失败都要执行的函数，放到complete函数中执行
+				// 不管请求成功还是失败，都会执行complete这个函数。隐藏
+				console.log('complete',xhr2);
+			}
+		});
+	</script>
+</body>
+</html>

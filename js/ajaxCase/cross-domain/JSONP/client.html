@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>JSONP 客户端·基本使用</title>
+</head>
+<body>
+	<script>
+		// 为每一个请求创建一个唯一的函数
+		// 全局函数都是在 window 下挂载
+		//函数名中不能出现‘.’，用substr(2)去掉随机数前面的'0.'  //得到一个不重复的随机数
+		var funcName = 'haha_' + Date.now() + Math.random().toString().substr(2);
+
+
+		var script = document.createElement('script');
+		// script.src = 'http://localhost/ajaxcase/cross-domain/server.php';  // client.html 和 server.php 跨域
+		script.src = 'http://localhost/ajaxcase/cross-domain/server.php?callback=' + funcName;
+		document.body.appendChild(script);
+
+		// function aaabbb(data){
+		// 	console.log('111',data);
+		// }
+
+		// 如果这个函数要调用两次，执行的都会是第二个
+		// function aaabbb(data){
+		// 	console.log('222',data);
+		// }
+
+
+		window[funcName] = function(data){
+			console.log('funcName',data);
+		}
+
+		// 测试
+		// function foo(data){
+		// 	console.log(data)
+		// }
+	</script>
+	<!-- // 测试 -->
+	<!-- <script src="http://localhost/ajaxcase/cross-domain/server.php"></script> -->
+</body>
+</html>

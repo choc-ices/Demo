@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>JSONP</title>
+</head>
+<body>
+	<script>
+		function myonload(data){
+			console.log(data);
+		}
+	</script>
+	<!--   JS代码不能动态获取数据库里面的数据，引入php和引入js原理是一样的   -->
+	<script src="http://localhost/ajaxcase/data.js"></script>
+
+	<!-- 
+		JSONP（JSON with Padding）：用 script标签 去请求一个服务端的 PHP 文件，这个 PHP文件 返回的结果是一段JS，
+		JS脚本 作用是调用我们事先定义好的一个函数，从而将服务器想要给客户端发送过去的数据发送给客户端
+	 -->
+	<!-- <script src="http://localhost/ajaxcase/data.php"></script> -->
+
+	<!-- 总结： 
+		JSONP就是借助于script标签能够发送不同源地址之间的请求的特性来完成跨域请求。
+		由于XMLHttpRequest无法发送不同源地址之间的跨域请求，所以要另寻他法，script这种方案就是我们选择的方式，我们把这种方式称之为JSONP.
+
+		问题：
+		1. JSONP需要服务端配合，服务端按照客户端的要求返回一段 JS，调用客户端的函数。
+		2. 只能发送GET请求。
+	 -->
+
+</body>
+</html>

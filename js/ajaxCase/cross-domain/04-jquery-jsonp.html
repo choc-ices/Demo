@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>jQuery JSONP</title>
+</head>
+<body>
+	<script src="../jquery-1.11.3.min.js"></script>
+	<script>
+	//不建议挂在全局，挂在全局会有污染。。具体怎么办。。。。。。
+
+		$.ajax({  //jsonp实际上和ajax一毛钱关系都没有
+			url:'http://localhost/ajaxcase/cross-domain/server.php',
+			dataType:'jsonp',
+			success:function(res){
+				console.log(res);
+			}
+		});
+	</script>
+</body>
+</html>

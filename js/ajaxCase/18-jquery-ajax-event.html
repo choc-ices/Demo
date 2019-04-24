@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>jQuery全局事件处理函数</title>
+</head>
+<body>
+	<div class="loading">正在玩命加载中……</div>
+	<button id="btn">请求</button>
+	<script src="jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+		$(document)
+			.ajaxStart(function(){
+				//只要有ajax请求发生就会执行
+				// 显示加载提示
+				$('.loading').fadeIn();
+				console.log("注意即将开始请求了");
+			}).ajaxStop(function(){
+				//只要有ajax请求结束就会执行
+				// 结束加载 提示
+				$('.loading').fadeOut();
+				console.log("请求结束了");
+			})
+
+		$('#btn').on('click',function(){
+			$.get('time.php');
+		});
+
+		// $(document).ajaxStart(function(){
+		// 	//只要有ajax请求发生就会执行
+		// 	// 显示加载提示
+		// 	$('.loading').fadeIn();
+		// 	console.log("注意即将开始请求了");
+		// })
+
+		// $(document).ajaxStop(function(){
+		// 	//只要有ajax请求结束就会执行
+		// 	// 结束加载 提示
+		// 	$('.loading').fadeOut();
+		// 	console.log("请求结束了");
+		// })
+
+		// $('#btn').on('click',function(){
+		// 	$.get('time.php');
+		// });
+
+
+		// $.ajax({
+		// 	url:'time.php',
+		// 	//type不指定，默认get
+		// 	beforeSend:function(xhr){
+		// 		// 显示加载提示
+		// 		$('.loading').fadeIn();
+		// 		console.log("即将开始请求");
+		// 	},
+		// 	complete:function(xhr){
+		// 		// 结束加载 提示
+		// 		$('.loading').fadeOut();
+		// 		console.log("请求结束了");
+		// 	}
+		// });
+	</script>
+</body>
+</html>

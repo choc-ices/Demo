@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>AJAX发送GET请求并传递参数</title>
+</head>
+<body>
+	<!-- 作业：点击列表中的li，输出相应的人员的年龄信息。 -->
+	<!-- <ul>
+		<li>张三</li>
+		<li>李四</li>
+		<li>二傻子</li>
+		<li>三愣子</li>
+	</ul> -->
+	<ul id="list"></ul>
+
+<script>
+	// var xhr = new XMLHttpRequest();
+	// //这里任然是使用URL中问好参数传递数据
+	// xhr.open("GET","users.php?id=2");
+	// xhr.send(null);
+
+	// xhr.onreadystatechange = function(){
+	// 	if(this.readyState !== 4) return;
+	// 	console.log(this.responseText);
+	// }
+
+	var list = document.getElementById("list");
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET','users.php');
+	xhr.send();
+	xhr.onreadystatechange = function(){
+		if(this.readyState !== 4) return;
+
+		var data = JSON.parse(this.responseText);
+
+		for(var i=0;i<data.length;i++){
+			// console.log(data[i]);
+			var liElement = document.createElement('li');
+			liElement.innerHTML = data[i].name;
+			liElement.id = data[i].id;
+			list.appendChild(liElement);
+
+			liElement.addEventListener('click',function(){
+				// console.log("data[i]");
+				//TODO : 通过AJAX操作获取服务端对应id的数据信息
+				// 如何获取元素被点击的li的对应id
+				// console.log(this.id);
+				var xhr1 = new XMLHttpRequest();
+				xhr1.open('GET','users.php?id=' + this.id);
+				xhr1.send();
+				xhr1.onreadystatechange = function(){
+					if(this.readyState!==4) return;
+					console.log(this.responseText);
+					var user = JSON.parse(this.responseText);
+					alert(user.age);
+				}
+			});
+			
+		}
+		// console.log(data);
+	}
+
+	//给每个li注册点击事件
+	//因为 li 是后来动态创建的，所以什么时候创建什么时候注册，不能写在这
+	// for(var i=0;i<list.children.length;i++){
+	// 	list.children[i].addEventListener('click',function(){
+	// 		console.log(i);
+	// 	});
+	// }
+
+</script>
+</body>
+</html>

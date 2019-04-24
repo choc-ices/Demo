@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>AJAX发送POST请求</title>
+</head>
+<body>
+<script>
+
+	//time()函数，传入一个标尺，表示一个time计时器
+	// console.time('abc');
+	// for(var i=0;i<100000000;i++);
+	// console.timeEnd('abc');
+
+	
+	var xhrAsync = new XMLHttpRequest();
+	//open 方法第三个参数是 async 可以传入一个布尔值，默认为 true（异步）。传入true和不传是一样的。
+	xhrAsync.open('GET', 'time.php', true);
+	console.time('async');
+	xhrAsync.send();
+	// 一定要注意事件注册的时间问题
+	xhrAsync.onreadystatechange = function(){
+		console.log(this.readyState);
+	}
+	console.log(xhrAsync.responseText);   //异步模式，耗时短，此处 打印为空
+	console.timeEnd('async');
+
+	
+	//同步模式 ajax操作会有楞等的情况
+	//区别在于 send 方法会不会出现等待情况
+	var xhrSync = new XMLHttpRequest();
+	//open 方法第三个参数是 async 可以传入一个布尔值，默认为 true（异步）。传入true和不传是一样的。
+	xhrSync.open('GET', 'time.php', false);
+	console.time('sync');
+	xhrSync.send();
+	console.log(xhrSync.responseText);   //打印出返回的内容
+	console.timeEnd('sync');
+</script>
+</body>
+</html>

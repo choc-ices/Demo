@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>jQuery高度封装的ajax函数</title>
+</head>
+<body>
+	<script src="jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+		//这几个方法都是基于$.ajax()方法实现的
+
+		//参数（url,请求的参数,回调函数(失败的时候不会执行，为success函数)）
+		$.get('json.php',{id:1},function(res){
+			console.log(res);
+		});
+
+		$.post('json.php',{id:1},function(res){
+			console.log(res);
+		});
+
+		//防止服务端没有设置application/json
+		$.getJSON('json.php',{id:1},function(res){
+			console.log(res);
+		});
+
+
+		//明确请求的方式，根据方式选择快捷方法
+	</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>jQuery中的ajax</title>
+</head>
+<body>
+  <script src="jquery-1.11.3.min.js"></script>
+  <script type="text/javascript">
+  	//
+  	// 最基础的调用
+  	// $.ajax('time.php',{
+  	// 	type:'GET',  //method请求方式
+  	// 	success:function(res){
+  	// 		// res =>  拿到的只是响应体
+  	// 		console.log(res);
+  	// 	}
+  	// });
+
+  	//
+  	//如何传参
+  	// $.ajax({
+  	// 	url:'time.php',
+  	// 	type:'post',
+  	// 	//data用于提交到服务器的参数，
+  	// 	//如果是GET请求就通过URL传递
+  	// 	//如果是POST请求就通过请求体传递
+  	// 	data:{id:1,name:'张三'},
+  	// 	success:function(res){
+  	// 		console.log(res);
+  	// 	}
+  	// });
+
+  	//
+  	//关于请求类型（服务端设置Content-Type）
+  	// $.ajax({
+  	// 	url:'json.php',
+  	// 	type:'get',
+  	// 	success:function(res){
+  	// 		// res会自动根据服务端响应的Content-Type自动转换为对象
+  	// 		// 这是jQuery内部实现的
+  	// 		console.log(res);
+  	// 	}
+  	// });
+
+  	//
+  	//关于请求类型（服务端没有设置Content-Type）
+  	$.ajax({
+  		url:'json.php',
+  		type:'get',
+  		// 用于设置响应体的类型  注意跟 data 参数没有关系
+  		dataType:'json',
+  		success:function(res){
+  			// 一旦设置了 dataType 选项，就不再关心服务端响应的 Content-Type 了
+  			// 客户端会主观认为服务器返回的就是json格式的字符串
+  			console.log(res);
+  		}
+  	});
+  </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>ajax的最终封装</title>
+</head>
+<body>
+<script type="text/javascript">
+
+	//封装者
+	//===========================================
+
+	function ajax(method,url,params,done){  //希望params传进来的是一个对象
+		var res = null;
+		method = method.toUpperCase();
+		var xhr = new XMLHttpRequest();
+		//将object类型的参数转换为key=value&key=value的格式
+		if(typeof params ==='object'){
+			var tempArr = [];
+			for(var key in params){
+				var value = params[key];
+				tempArr.push(key + "=" + value);
+			}
+			// tempArr => ['key1=value1','key2=value2']
+			params = tempArr.join('&');
+			// params => 'key1=value1&key2=value2'
+		}
+		if(method === 'GET'){
+			url += '?' + params;
+		}
+		xhr.open(method,url);
+		var data = null;
+		if(method === 'POST'){
+			xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+		    data = params;
+		}	
+		xhr.send(data);
+		xhr.onreadystatechange = function(){
+			if(this.readyState !== 4) return;
+			//不应该在封装的函数中主观的处理响应的结果；
+			// console.log(this.responseText);
+			//无法在内部包含的函数中通过 return给外部函数的调用返回结果
+			//return this.responseText;
+			//由于异步模式下，这里的代码最后执行，所以不可能返回在外部通过返回值的方式返回数据
+			//res = this.responseText;
+			
+			//封装者太主观，所以让调用者告诉封装者应该做什么，即 使用回调函数            
+			done(this.responseText);
+		}
+		//return res;
+	}
+
+	// var res = ajax('GET','time.php',{id:1});
+	// console.log(res);
+
+
+	//调用者
+	//======================================
+
+	var onDone = function(res){
+		console.log('hahahahha');
+		console.log('hohohohoho');
+		console.log(res);
+		console.log('做完了');
+	}
+	ajax('get','time.php',{},onDone);
+</script>
+</body>
+</html>
