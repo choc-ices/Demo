@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>9 单例模式 - 创建类模式</title>
+</head>
+<body>
+<script>
+	// function Resource(){
+	// 	this.balance = 100;
+	// }
+
+	// var r = new Resource();
+	// r.balance = 50;
+	// console.log('r:', r);  //50
+
+	// var r2 = new Resource();
+	// console.log('r2:', r2);  //100
+
+
+	//解决：无论new几个Resource对象，返回同一个实例。
+
+	/**
+
+	// ins没有隐藏起来，不受保护。而且ins和Resource关联性不强。
+	var ins = {
+		balance:100;
+	}
+	function Resource(){
+		return ins;
+	}
+
+	var r = new Resource();
+	r.balance = 50;
+	console.log('r:', r);  //50
+
+	var r2 = new Resource();
+	console.log('r2:', r2);  //100
+
+	*/
+
+
+	function Resource(){
+		// 如果不是第一次new(instance肯定是存在的)
+		if(Resource.instance){
+			return Resource.instance;
+		}else{  //否则（instance不存在）
+			// 组装新对象
+			this.balance = 100;  //balance是机器生成的对象里面的属性。每生产一个对象，就有一个balance
+			// 将其存放到Resource机器上
+			Resource.instance = this;  // instance是直接作用在机器上的
+			// return Resource.instance;  //会自动返回
+		}
+	}
+
+	var r = new Resource();
+	console.log('r:', r);
+	r.balance = 50;
+	console.log('r:', r);  //50
+
+	var r2 = new Resource();
+	console.log('r2:', r2);  //100
+
+	r.balance = 55;
+	console.log('r2:', r2);
+
+</script>
+</body>
+</html>

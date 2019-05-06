@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>2 原型模式 - 创建类模式</title>
+</head>
+<body>
+<script type="text/javascript">
+	// function Student(name, gender, score){
+	// 	this.name = name;
+	// 	this.gender = gender;
+	// 	this.score = score;
+	// 	this.quality = 100;
+	// 	this.sumScore = sumScore;		
+	// }
+
+	// function sumScore(){
+	// 	return this.score + this.quality;
+	// }
+
+
+	// 改造为原型模式：
+	function Student(name, gender, score){
+		this.name = name;
+		this.gender = gender;
+		this.score = score;
+		this.quality = 100;
+	}
+
+	Student.prototype.sumScore = function(){
+		return this.score + this.quality;
+	}
+
+	var whh = new Student('吴呼呼', '男', 89);
+	var ddd = new Student('丁咚咚', '女', 99);
+
+	console.log(whh.name, whh.sumScore());
+	console.log(ddd.name, ddd.sumScore());
+</script>
+</body>
+</html>

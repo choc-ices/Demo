@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>1 构造器模式 - 创建类模式</title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+	//ES5
+
+	// var whh = {};
+	// whh.name = '呜呼呼';
+	// whh.gender = '男';
+	// whh.score = 98;
+	// whh.quality = '100';
+
+	function Student(name, gender, score){
+		this.name = name;
+		this.gender = gender;
+		this.score = score;
+		this.quality = 100;
+	}
+
+	var whh = new Student('吴呼呼', '男', 89);
+	var ddd = new Student('丁咚咚', '女', 99);
+
+	console.log(whh.name);
+	console.log(ddd.name);
+	*/
+
+
+	//ES6
+	class Student{
+		constructor(name, gender, score){
+			this.name = name;
+			this.gender = gender;
+			this.score = score;
+			this.quality = 100;
+
+			this.sumScore = function(){
+				return this.score + this.quality;
+			}
+			
+		}
+		// sumScore(){
+		// 	return this.score + this.quality;
+		// }
+	}
+
+	var whh = new Student('吴呼呼', '男', 89);
+	var ddd = new Student('丁咚咚', '女', 99);
+
+	console.log(whh.name, whh.sumScore());
+	console.log(ddd.name, ddd.sumScore());
+</script>
+</body>
+</html>

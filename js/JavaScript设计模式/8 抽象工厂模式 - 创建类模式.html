@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>8 抽象工厂模式 - 创建类模式</title>
+</head>
+<body>
+
+<script type="text/javascript">
+	function Student(name, science){
+		this.name = name;
+		this.science = science;
+	}
+
+	function Teacher(){
+		this.intro = '我是个老师';
+	}
+	function studentFactory(name, type){
+		switch(type){
+			case "文科":
+				return new Student(name, ['政治', '历史', '地理']);
+				break;
+			case "理科":
+				return new Student(name, ['数学', '物理', '化学']);
+				break;
+			case "体育":
+				return new Student(name, ['长跑', '短跑', '接力跑', '...']);
+				break;
+			default:
+				throw "没有这个科目";
+		}
+	}
+
+	function teacherFactory(name){
+		return new Teacher();
+	}
+
+	/**
+	* 抽象工厂，本质上是在组织工厂，并不生产东西。类似于电话查询。
+	*/
+	// 选择工厂
+	function userProducer(factory){
+		switch(factory){
+			case 'student':
+				return studentFactory;
+				break;
+			case 'teacher':
+				return teacherFactory;
+				break;
+			default:
+				throw '没有这个工厂';
+		}
+	}
+
+	var factory = userProducer('teacher');
+	console.log('factory:',factory);
+	var t = factory();
+	console.log(t);
+
+	var factory2 = userProducer('student');
+	console.log('factory2:', factory2);
+	var s = factory2('王茜茜', '文科');
+	console.log(s);
+
+	var student1 = userProducer('student')('薛莹莹', '文科');
+	console.log(student1);
+</script>
+</body>
+</html>

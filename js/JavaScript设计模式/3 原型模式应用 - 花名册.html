@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>花名册</title>
+</head>
+<body>
+<!-- 
+<table id="roster">
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table> -->
+<table id="roster">
+	
+</table>
+<!-- <script>
+	//ES5实现
+	function Student(name, gender, score){
+		this.name = name;
+		this.gender = gender;
+		this.score = score;
+		this.quality = 100;
+	}
+
+	Student.prototype.sumScore = function(){
+		return this.score + this.quality;
+	}
+
+	/**
+	* 将数据转换为HTML并插入到表格中
+	*/
+	Student.prototype.mount = function(){
+		var tr = document.createElement('tr');
+		tr.innerHTML = 
+		'<td>' + this.name + '</td>' + 
+		'<td>' + this.gender + '</td>' + 
+		'<td>' + this.score + '</td>' + 
+		'<td>' + this.quality + '</td>' + 
+		'<td>' + this.sumScore() + '</td>';
+
+		var roster = document.getElementById('roster');
+		roster.appendChild(tr);
+	}
+
+	var whh = new Student('吴呼呼', '男', 89);
+	var ddd = new Student('丁咚咚', '女', 99);
+	whh.mount();
+	ddd.mount();
+
+	// console.log('whh, lsd:', whh, ddd);
+	//console.log(new Student('萌芽芽', '女', 99));
+</script> -->
+
+<script>
+	//ES6实现
+	class Student{
+		constructor(name, gender, score){
+			this.name = name;
+			this.gender = gender;
+			this.score = score;
+			this.quality = 100;
+		}
+
+		sumScore(){
+			return this.score + this.quality;
+		}
+
+		mount(){
+			var tr = document.createElement('tr');
+			tr.innerHTML = 
+			'<td>' + this.name + '</td>' + 
+			'<td>' + this.gender + '</td>' + 
+			'<td>' + this.score + '</td>' + 
+			'<td>' + this.quality + '</td>' + 
+			'<td>' + this.sumScore() + '</td>';
+
+			var roster = document.getElementById('roster');
+			roster.appendChild(tr);
+		}
+	}
+
+	var whh = new Student('吴呼呼', '男', 89);
+	var ddd = new Student('丁咚咚', '女', 99);
+	whh.mount();
+	ddd.mount();
+</script>
+</body>
+</html>

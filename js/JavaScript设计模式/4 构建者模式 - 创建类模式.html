@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>4 构建者模式 - 创建类模式</title>
+</head>
+<body>
+<!-- <script type="text/javascript">
+	// ES5
+	var studentCount = 0;
+
+	function Student(){
+	}
+	function StudentBuilder(){
+		this.student = new Student();  //student存在StudentBuilder里面的，没有暴露在外面
+
+		this.setName = function(name){
+			this.student.name = name;
+		}
+		this.setGender = function(gender){
+			if(gender !== '男' && gender!= '女'){
+				throw "？？？";
+			}
+			this.student.gender = gender;
+		}
+		this.setHairLength = function(hairLength){
+			if((this.student.gender == '男' && hairLength > 1) || (this.student.gender == '女' && hairLength > 25)){
+				throw "回去理发";
+			}
+			this.student.hairLength = hairLength;
+		}
+		this.build = function(){
+			studentCount++;
+			console.log(studentCount);
+			return this.student;
+		}
+	}
+	var builder = new StudentBuilder();
+	builder.setName('王华华');
+	builder.setGender('男');
+	builder.setHairLength(1);
+	var whh = builder.build();
+
+	var builder2 = new StudentBuilder();
+	builder2.setName('萌呀呀');
+	builder2.setGender('女');
+	builder2.setHairLength(23);
+	var myy = builder2.build();
+
+	console.log(whh);
+	console.log(myy);
+
+</script> -->
+
+<!-- <script type="text/javascript">
+	// 原型模式
+	var studentCount = 0;
+
+	function Student(){
+	}
+	function StudentBuilder(){
+		this.student = new Student();  //student存在StudentBuilder里面的，没有暴露在外面
+	}
+
+	StudentBuilder.prototype.setName = function(name){
+		this.student.name = name;
+	}
+	StudentBuilder.prototype.setGender = function(gender){
+		if(gender !== '男' && gender!= '女'){
+			throw "？？？";
+		}
+		this.student.gender = gender;
+	}
+	StudentBuilder.prototype.setHairLength = function(hairLength){
+		if((this.student.gender == '男' && hairLength > 1) || (this.student.gender == '女' && hairLength > 25)){
+			throw "回去理发";
+		}
+		this.student.hairLength = hairLength;
+	}
+	StudentBuilder.prototype.build = function(){
+		studentCount++;
+		console.log(studentCount);
+		return this.student;
+	}
+
+	var builder = new StudentBuilder();
+	builder.setName('王华华');
+	builder.setGender('男');
+	builder.setHairLength(1);
+	var whh = builder.build();
+
+	var builder2 = new StudentBuilder();
+	builder2.setName('萌呀呀');
+	builder2.setGender('女');
+	builder2.setHairLength(21);
+	var myy = builder2.build();
+
+	console.log(whh);
+	console.log(myy);
+
+</script> -->
+
+<script type="text/javascript">
+	// ES6
+	var studentCount = 0;
+
+	class Student{
+	}
+
+	class StudentBuilder{
+		constructor(){
+			this.student = new Student();
+		}
+
+		setName(name){
+			this.student.name = name;
+		}
+		setGender(gender){
+			if(gender !== '男' && gender!= '女'){
+				throw "？？？";
+			}
+			this.student.gender = gender;
+		}
+		setHairLength(hairLength){
+			if((this.student.gender == '男' && hairLength > 1) || (this.student.gender == '女' && hairLength > 25)){
+				throw "回去理发";
+			}
+			this.student.hairLength = hairLength;
+		}
+		build(){
+			studentCount++;
+			console.log(studentCount);
+			return this.student;
+		}
+	}
+
+	var builder = new StudentBuilder();
+	builder.setName('王华华');
+	builder.setGender('男');
+	builder.setHairLength(1);
+	var whh = builder.build();
+
+	var builder2 = new StudentBuilder();
+	builder2.setName('萌呀呀');
+	builder2.setGender('女');
+	builder2.setHairLength(21);
+	var myy = builder2.build();
+
+	console.log(whh);
+	console.log(myy);
+
+</script>
+</body>
+</html>

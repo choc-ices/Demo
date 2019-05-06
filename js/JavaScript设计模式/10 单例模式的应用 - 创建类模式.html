@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>10 单例模式的应用 - 创建类模式</title>
+</head>
+<body>
+<!-- 不管哪个部门用钱也好，充钱也好，作用的都是同一个对象属性 -->
+<div>
+	<div>采购金额：<span id="balanceNum">100</span>元</div>
+	<div class="page a">
+		部门A:
+		<input type="number">
+		<button class="add">+</button>
+		<button class="sub">-</button>
+	</div>
+	<div class="page b">
+		部门B:
+		<input type="number">
+		<button class="add">+</button>
+		<button class="sub">-</button>
+	</div>
+</div>
+<script>
+var balanceNum = document.getElementById('balanceNum');
+init();
+
+// 多个部门了可以在这添加新部门
+function init(){
+	var a = new Division('.page.a');
+	var b = new Division('.page.b');
+}
+
+function renderBalance(){
+	var resource = new Resource();
+	balanceNum.innerText = resource.balance;
+}
+
+function Division(selector){
+	var resource = new Resource();
+
+	this.el = document.querySelector(selector);
+	this.elAdd = this.el.querySelector('.add');
+	this.elSub = this.el.querySelector('.sub');
+	this.elInput = this.el.querySelector('input');
+
+	
+	// this.elAdd.addEventListener('click', () => {
+	// 	console.log('this:',this);
+	// 	resource.add(this.elInput.value);
+	// 	console.log(resource.balance);
+	// });
+	// or
+	var me = this;
+	this.elAdd.addEventListener('click', function(){
+		console.log('this:',me);
+		resource.add(me.elInput.value);
+		console.log(resource.balance);
+		me.elInput.value = '';
+		renderBalance();
+	});	
+	
+	this.elSub.addEventListener('click', function(){
+		resource.sub(me.elInput.value);
+		console.log(resource.balance);
+		me.elInput.value = '';
+		renderBalance();
+	});
+
+	
+}
+
+function Resource(){
+	// 如果不是第一次new(instance肯定是存在的)
+	if(Resource.instance){
+		return Resource.instance;
+	}else{  //否则（instance不存在）
+		// 组装新对象
+		this.balance = 100;  //balance是机器生成的对象里面的属性。每生产一个对象，就有一个balance
+		// 将其存放到Resource机器上
+		Resource.instance = this;  // instance是直接作用在机器上的
+		// return Resource.instance;  //会自动返回
+	}
+}
+
+Resource.prototype.add = function(num){
+	this.change(num);
+}
+Resource.prototype.sub = function(num){
+	this.change(-num);
+}
+Resource.prototype.change = function(num){
+	if(!num)
+		return;
+	this.balance += parseFloat(num);
+}
+</script>
+</body>
+</html>

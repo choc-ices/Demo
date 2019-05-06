@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>6 工厂模式 - 创建类模式</title>
+</head>
+<body>
+
+<script type="text/javascript">
+	function Student(name, science){
+		this.name = name;
+		this.science = science;
+	}
+
+	function factory(name, type){
+		switch(type){
+			case "文科":
+				return new Student(name, ['政治', '历史', '地理']);
+				break;
+			case "理科":
+				return new Student(name, ['数学', '物理', '化学']);
+				break;
+			case "体育":
+				return new Student(name, ['长跑', '短跑', '接力跑', '...']);
+				break;
+			default:
+				throw "没有这个科目";
+		}
+	}
+	var whh = factory("王华华", "文科");
+	var zll = factory("张龙龙", "理科");
+	var xdd = factory("徐冬冬", "体育");
+	console.log(whh);
+	console.log(zll);
+	console.log(xdd);
+
+	var hbb = factory("胡贝贝", "游泳");
+	console.log(hbb);
+</script>
+</body>
+</html>
