@@ -6,6 +6,7 @@
 </head>
 <body>
 	<form action="add.php" method="post" enctype="multipart/form-data">
+		<!-- 加了文件域就必须要加enctype，单向依赖关系 -->
 		<input type="text" name="name" id="">
 		<button>提交</button>
 	</form>
