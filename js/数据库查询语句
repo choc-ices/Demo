@@ -1,0 +1,7 @@
+数据库查询语句：
+  this.sql = (this.allFaceType==0? `ftype_id in (1,2)`:`ftype_id=${this.allFaceType}`) 
+      + (this.tableTelephone ? ` AND phone=${this.tableTelephone}`:'') 
+      + (this.tableUserName ? ` AND name like'%${this.tableUserName}%'`:'')
+      + (this.tableDatePickerSE ? ((this.tableDatePickerSE.length == 2 && this.tableDatePickerSE[0]!=this.tableDatePickerSE[1] ?
+       ` AND crt_time between '${this.tableDatePickerSE[0]} 00:00:00' AND '${this.tableDatePickerSE[1]} 23:59:59'`:'')
+      + (this.tableDatePickerSE.length == 2 && this.tableDatePickerSE[0]==this.tableDatePickerSE[1] ?` AND crt_time like '${this.tableDatePickerSE[0]}%'`:'')):'');
